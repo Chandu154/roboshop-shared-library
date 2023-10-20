@@ -12,7 +12,7 @@ def decidePipeline(Map configMap){
             //nodeJSVMCI(configMap)
             break
         case 'JavaVM'
-            JavaVMCI(configMap)
+            javaVMCI(configMap)
             break
         default:
             error "Un recongnised appilication"
