@@ -4,5 +4,18 @@
 // below function getting inputs from configMap
 
 def decidePipeline(Map configMap){
-    echo "I need to take decission based on the map you sent"
+    application = configMap.get("application")
+    // here we are getting nodeJSVM
+    switch(application) {
+        case 'nodeJSVM':
+            echo "appication is NodeJS and VM based"
+            //nodeJSVMCI(configMap)
+            break
+        case 'JavaVM'
+            JavaVMCI(configMap)
+            break
+        default:
+            error "Un recongnised appilication"
+            break        
+    }
 }
