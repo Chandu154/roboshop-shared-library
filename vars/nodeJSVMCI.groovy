@@ -69,12 +69,14 @@ def call(Map configMap) {
              // upstream job is CI 
           // here  I need to configure downstream job.  I have to pass package version for catalogue-deployment for which one to deploy
           // This job will wait untill downstream job is over  
+          // by default when a non-master branch CI is done , we can go for DEV deployment
             stage('Deploy') {
                 steps {
                     script{
                         echo "Deployment"
                         def params = [
                             string(name: 'version', value: "$packageVersion")
+                            string(name: 'environment', value: "dev")
                         ]
                     build job: "../${component}-deploy", wait: true, parameters: params
                 }
