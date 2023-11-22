@@ -81,10 +81,9 @@ def call(Map configMap) {
                 steps {
                     script{
                         sh """
-                            docker push devarachandrasekhar/${component}:${packageVersion} .
+                            docker push devarachandrasekhar/${component}:${packageVersion}
                         """
-                    }    
-                    
+                    }
                 }
             }
 
