@@ -86,6 +86,18 @@ def call(Map configMap) {
                     }
                 }
             }
+            
+            stage('EKS Deploy') {
+                steps {
+                    script{
+                        sh """
+                            cd helm
+                            sed -i 's/IMAGE_VERSION/${packageVersion}/g' values.yaml
+                            helm install ${component} . 
+                        """
+                    }
+                }
+            }
 
              // upstream job is CI 
           // here  I need to configure downstream job.  I have to pass package version for catalogue-deployment for which one to deploy
